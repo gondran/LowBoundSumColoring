@@ -1,3 +1,6 @@
+We reuse the code source 'MoMC2016.c' from Chu-Min Li & Hua Jiang (see copyright in the file)
+This is a software for finding a maximum clique in an undirected graph.
+
 Compile for obtaining SoMC, DoMC and MoMC, respectively, from the same source:
 
 gcc MoMC2016.c -O3 -DSOMC -o SoMC
