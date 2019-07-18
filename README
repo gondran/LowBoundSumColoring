@@ -1,0 +1,30 @@
+Compile for obtaining SoMC, DoMC and MoMC, respectively, from the same source:
+
+gcc MoMC2016.c -O3 -DSOMC -o SoMC
+gcc MoMC2016.c -O3 -DDOMC -o DoMC
+gcc MoMC2016.c -O3 -DMOMC -o MoMC
+
+for finding a maximum clique, run 
+./MoMC inputGraphInDimacsFormat
+
+for listing all maximum cliques
+./MoMC instance -a n (where n is the max number of cliques to be printed, 
+                      n must be < MAX_NB_CLQ_PRINT 3000; 1000 in the initial version)
+
+after you can run the script python 3:
+
+python lbSumCol.py <graph instance> <max seconds for MoMC> <lower bound of chromatic number>
+exemple : python lbSumCol.py dimacs/DSJC1000.9.col 100 216
+
+The <lower bound of chromatic number> can be equal to 0 if you have not idea of its value
+
+It create 2 folders in the directory : 
+
+1) "tmp" and 2 files inside:
+     a) DSJC1000.9_c.col    : the complement graph of DSJC1000.9.col
+     b) DSJC1000.9_is_c.col : the complement graph of all maximum cliques (independent sets) of DSJC1000.9_c.col (DSJC1000.9.col)
+                             called "maximum independent set graph" in our paper
+2) "results" and 3 files inside:
+     a) DSJC1000.9_c_one.txt     : the ouput of ./MoMC DSJC1000.9_c.col
+     b) DSJC1000.9_c_all.txt     : the ouput of ./MoMC DSJC1000.9_c.col -a 3000
+     c) DSJC1000.9_is_c_one.txt  : the ouput of ./MoMC DSJC1000.9_is_c.col
